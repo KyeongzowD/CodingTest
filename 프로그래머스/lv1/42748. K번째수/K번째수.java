@@ -3,14 +3,10 @@ class Solution {
     public int[] solution(int[] array, int[][] commands) {
         int[] answer = new int[commands.length];
         
-        for(int i=0;i<commands.length;i++)     
-        {
-            ArrayList <Integer> arr=new ArrayList <Integer>();
-            for(int j=commands[i][0]-1;j<commands[i][1];j++){
-                arr.add(array[j]);
-            }
-            Collections.sort(arr);
-            answer[i]=arr.get(commands[i][2]-1);
+        for(int i=0;i<commands.length;i++){
+            int[] arr=Arrays.copyOfRange(array, commands[i][0]-1, commands[i][1]);
+            Arrays.sort(arr);
+            answer[i]=arr[commands[i][2]-1];
         }
         return answer;
     }
