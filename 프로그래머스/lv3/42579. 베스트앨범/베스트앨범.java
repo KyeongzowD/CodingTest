@@ -18,7 +18,6 @@ class Solution {
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(gen_map.entrySet());//장르별 재생수 내림차순
         entryList.sort((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue()));
 
-        
 	    for(Map.Entry<String, Integer> entry : entryList){
             HashMap<Integer,Integer> pla_map=new HashMap<Integer,Integer>();//인덱스 별 재생 횟수
             String s=entry.getKey();
@@ -27,7 +26,6 @@ class Solution {
                     pla_map.put(j,plays[j]);//각 장르별 노래를 맵에 저장
                 }
             }
-            
             
             List<Map.Entry<Integer, Integer>> sortedList = pla_map.entrySet()
                 .stream()
