@@ -8,9 +8,10 @@ class Solution {
                 answer++;
             }
         }
-        if(nums.length/2<answer){
+        
+        if(answer>nums.length/2){
             answer=nums.length/2;
         }
         return answer;
-    } 
+    }
 }
