@@ -14,31 +14,23 @@ public class Main {
     //10sec, 30sec(start), 1min(60sec), 10min(600sec)
     int[] button={0,0,0,0};
 
-    while(sec>0){
-      if(sec>=600){
-        sec-=600;
-        button[3]++;
-      }
-      else if(sec>=60){
-        sec-=60;
-        button[2]++;
-      }
-      else if(sec>=30){
-        sec-=30;
-        button[1]++;
-      }
-      else if(sec>=10){
-        sec-=10;
-        button[0]++;
-      }
-    }
+    button[3]=sec/600;
+    sec-=button[3]*600;
+  
+    button[2]=sec/60;
+    sec-=button[2]*60;
+
+    button[1]=sec/30;
+    sec-=button[1]*30;
+
+    button[0]=sec/10;
 
     if(button[1]==0)
       cnt++;
 
-    for(int i=0;i<4;i++){
+    for(int i=0;i<4;i++)
       cnt+=button[i];
-    }
+    
 
     bw.write(Integer.toString(cnt));
     bw.flush();
