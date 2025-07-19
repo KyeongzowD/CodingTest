@@ -28,20 +28,18 @@ public class Main {
             soil[i] = Integer.parseInt(st.nextToken());
         }
 
-        int k = N - 2; // 기름값이 싼 도시의 위치
-        int arrival = len[N - 2]; // 현재 위치에서 도착지까지의 거리
-        for (int i = N - 2; i > 0; i--) {
-            if (soil[i] >= soil[i - 1]) { // 이전 도시가 기름값이 더 저렴할 경우
-                k = soil[i - 1];
-                arrival += len[i - 1];
-            } else { // 이전 도시가 기름값이 더 비쌀 경우
-                ans += k * arrival; // 비싸지기 때문에 저렴했던 기름값 미리 계산
-                totalLen -= arrival; // 남은 거리에서 계산한 거리 제거
-                k = i - 1;
-                arrival = 0;
+        int k = soil[0]; // 기름값이 싼 도시의 위치
+        int arrival = len[0]; // 계산할 거리
+        for (int i = 1; i < N - 1; i++) {
+            if (k < soil[i]) { // 기름값이 비싸질 경우, 현재의 기름으로 다름 기름값을 계산
+                arrival += len[i]; // 함께 계산할 거리 합산
+            }else { // 값이 저렴해질 경우, 여태의 거리 계산과 k값 변경
+                ans += k * arrival;
+                k = soil[i];
+                arrival = len[i];
             }
         }
-        ans += soil[0] * totalLen;
+        ans += k * arrival;
 
         bw.write(String.valueOf(ans));
         bw.flush();
