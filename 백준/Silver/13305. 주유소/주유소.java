@@ -34,12 +34,12 @@ public class Main {
             if (k < soil[i]) { // 기름값이 비싸질 경우, 현재의 기름으로 다름 기름값을 계산
                 arrival += len[i]; // 함께 계산할 거리 합산
             }else { // 값이 저렴해질 경우, 여태의 거리 계산과 k값 변경
-                ans += k * arrival;
+                ans += (long)k * arrival;
                 k = soil[i];
                 arrival = len[i];
             }
         }
-        ans += k * arrival;
+        ans += (long)k * arrival;
 
         bw.write(String.valueOf(ans));
         bw.flush();
