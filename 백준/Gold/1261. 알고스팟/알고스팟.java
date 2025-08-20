@@ -43,7 +43,6 @@ public class Main {
         while (!que.isEmpty()) {
             int[] arr = que.poll();
             int y = arr[0], x = arr[1], cost = arr[2];
-            if (cost != dist[y][x]) continue;
             if (y == N - 1 && x == M - 1) return;
             visited[y][x] = true;
 
